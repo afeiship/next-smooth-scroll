@@ -6,12 +6,12 @@
   nx.smoothScroll = function (inDistance, inRate) {
     var distance = inDistance || 0;
     var rate = inRate || 0.8;
-    var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-    if (currentScroll > distance) {
+    var current = document.documentElement.scrollTop || document.body.scrollTop;
+    if (current > distance) {
       global.requestAnimationFrame(function () {
         nx.smoothScroll(distance, rate);
       });
-      global.scrollTo(distance, rate * currentScroll);
+      global.scrollTo(distance, rate * current);
     }
   };
 
