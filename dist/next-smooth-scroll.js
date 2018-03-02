@@ -15,7 +15,7 @@
       });
       global.scrollTo(distance, rate * current);
     } else {
-      callback();
+      callback(window.event);
     }
   };
 
