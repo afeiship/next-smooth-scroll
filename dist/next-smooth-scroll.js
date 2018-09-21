@@ -1,26 +1,22 @@
 (function () {
 
-  var global = global || this || self || window;
+  var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
+  var nxEaseout = nx.easeout || require('next-easeout');
+  var DOC = document.body.scrollTop ? document.body : document.documentElement;
 
-  nx.smoothScroll = function (inDistance, inRate, inCallback) {
-    var distance = inDistance || 0;
-    var rate = inRate || 0.8;
-    var current = document.documentElement.scrollTop || document.body.scrollTop;
-    var callback = inCallback || nx.noop;
-
-    if (current > distance) {
-      global.requestAnimationFrame(function () {
-        nx.smoothScroll(distance, rate, callback);
-      });
-      global.scrollTo(distance, rate * current);
-    } else {
-      callback();
+  var NxSmoothScroll = nx.declare('nx.SmoothScroll', {
+    statics: {
+      easeout: function (inTo, inRate) {
+        nxEaseout(DOC.scrollTop, inTo, inRate, function (value) {
+          DOC.scrollTop = value;
+        });
+      }
     }
-  };
+  });
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = nx.smoothScroll;
+    module.exports = NxSmoothScroll;
   }
 
 }());
