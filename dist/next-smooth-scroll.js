@@ -6,6 +6,17 @@
   var DOC = document.body.scrollTop ? document.body : document.documentElement;
 
   var NxSmoothScroll = nx.declare('nx.SmoothScroll', {
+    properties: {
+      bottomToScroll: {
+        get: function () {
+          // https://stackoverflow.com/questions/34874658/get-the-scroll-distance-from-bottom-to-scroll
+          var scrollPosition = window.pageYOffset;
+          var windowSize = window.innerHeight;
+          var bodyHeight = document.body.offsetHeight;
+          return Math.max(bodyHeight - (scrollPosition + windowSize), 0);
+        }
+      }
+    },
     statics: {
       easeout: function (inTo, inRate, inCallback) {
         var callback = inCallback || nx.noop;
