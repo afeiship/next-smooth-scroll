@@ -27,6 +27,7 @@
     "mocha": "^3.5.0"
   },
   "dependencies": {
+    "next-easeout": "github:afeiship/next-easeout",
     "next-js-core2": "github:afeiship/next-js-core2"
   }
 }
