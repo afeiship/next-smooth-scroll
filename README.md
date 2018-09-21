@@ -1,8 +1,11 @@
 # next-smooth-scroll
 > Smooth scroll based on next
 
+## usage:
+```js
+import NxSmoothScroll from 'next-smooth-scroll';
 
-## resources:
+//to top:
+NxSmoothScroll.easout(0, 4);
+```
 
-## todos:
-- [ ] unit test case
