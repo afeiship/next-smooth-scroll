@@ -8,9 +8,10 @@
   var NxSmoothScroll = nx.declare('nx.SmoothScroll', {
     statics: {
       easeout: function (inTo, inRate, inCallback) {
+        var callback = inCallback || nx.noop;
         nxEaseout(DOC.scrollTop, inTo, inRate, function (inValue, inRet) {
           DOC.scrollTop = inValue;
-          inRet && inCallback();
+          inRet && callback();
         });
       }
     }
