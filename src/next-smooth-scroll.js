@@ -16,8 +16,8 @@
         }
       }
     },
-    statics: {
-      config: function(inAccessor) {
+    methods: {
+      init: function(inAccessor) {
         this.accessor = inAccessor || {
           set: function(inValue) {
             DOC.scrollTop = inValue;
@@ -27,7 +27,7 @@
           }
         };
       },
-      easeout: function(inTo, inRate, inCallback) {
+      run: function(inTo, inRate, inCallback) {
         var callback = inCallback || nx.noop;
         nxEaseout(this.accessor.get(), inTo, inRate, function(inValue, inRet) {
           this.accesgsor.set(inValue);
