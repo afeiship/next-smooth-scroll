@@ -18,10 +18,20 @@
       }
     },
     statics: {
+      config: function(inAccessor){
+        this.accessor= inAccessor || {
+          set: function(inValue){
+            DOC.scrollTop = inValue;
+          },
+          get: function(){
+            return DOC.scrollTop
+          }
+        }
+      },
       easeout: function (inTo, inRate, inCallback) {
         var callback = inCallback || nx.noop;
-        nxEaseout(DOC.scrollTop, inTo, inRate, function (inValue, inRet) {
-          DOC.scrollTop = inValue;
+        nxEaseout(this.accessor.get(), inTo, inRate, function (inValue, inRet) {
+          this.accesgsor.set(inValue);
           inRet && callback();
         });
       }
