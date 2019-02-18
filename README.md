@@ -5,23 +5,18 @@
 ```js
 import NxSmoothScroll from 'next-smooth-scroll';
 
-//to top:
-NxSmoothScroll.easout(0, 4);
-```
+// window:
+const scroller = new NxSmoothScroll();
+scroller.run(0, 0.4);
 
-
-## native smooth scroll(use css)
-```js
-// JS
-window.scroll({
-  top: 2500, 
-  left: 0, 
-  behavior: 'smooth' 
-});
-
-
-// Scroll to a certain element
-document.querySelector('.hello').scrollIntoView({ 
-  behavior: 'smooth' 
-});
+// other scoller:
+const scroller2 = new NxSmoothScroller({
+  get(){
+    return this.scroller.scrollTop;
+  },
+  set(inValue){
+    this.scroller.set('scrollTop', inValue);
+  }
+}):
+scroller.run(100, 0.4);
 ```
