@@ -29,8 +29,9 @@
       },
       run: function(inTo, inRate, inCallback) {
         var callback = inCallback || nx.noop;
+        var self = this;
         nxEaseout(this.accessor.get(), inTo, inRate, function(inValue, inRet) {
-          this.accesgsor.set(inValue);
+          self.accesgsor.set(inValue);
           inRet && callback();
         });
       }
